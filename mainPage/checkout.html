@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оплата | weisRacing Performance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo" onclick="location.href='index.html'" style="cursor:pointer">
+            weis<span class="logo-r">Racing</span>
+        </div>
+        <nav>
+            <a href="index.html" class="nav-link">Вернуться в магазин</a>
+        </nav>
+    </div>
+</header>
+
+<section class="section" style="margin-top: 100px;">
+    <h2>Оформление заказа</h2>
+    
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; max-width: 1000px; margin: 0 auto;">
+        
+        <div class="card-box" style="flex: 1; min-width: 320px;">
+            <h3 style="margin-bottom: 20px; font-size: 14px; color: red;">ДАННЫЕ ПЛАТЕЛЬЩИКА</h3>
+            <form id="paymentForm" onsubmit="processPayment(event)">
+                <input type="text" placeholder="ИМЯ НА КАРТЕ" required style="text-transform: uppercase;">
+                <input type="text" id="cardNumber" placeholder="НОМЕР КАРТЫ" maxlength="19" required>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" placeholder="ММ/ГГ" maxlength="5" required>
+                    <input type="password" placeholder="CVV" maxlength="3" required>
+                </div>
+                <input type="email" placeholder="E-MAIL ДЛЯ ЧЕКА" required>
+                <button type="submit" style="margin-top: 20px;">ПОДТВЕРДИТЬ И ОПЛАТИТЬ</button>
+            </form>
+        </div>
+
+        <div class="card-box" style="flex: 1; min-width: 320px; background: rgba(20,20,20,0.9);">
+            <h3 style="margin-bottom: 20px; font-size: 14px; color: red;">ВАШ ЗАКАЗ</h3>
+            <div id="checkoutItems" style="margin-bottom: 20px;">
+                </div>
+            <div style="border-top: 1px solid #333; padding-top: 15px; font-size: 20px; text-align: right;">
+                ИТОГО: <span id="checkoutTotal" style="color: red; font-weight: bold;">0</span> ₽
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 WEISRACING PERFORMANCE — SECURE CHECKOUT SYSTEM</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    // Специфичная логика для страницы оплаты
+    document.addEventListener('DOMContentLoaded', () => {
+        renderCheckout();
+        
+        // Маска для номера карты
+        document.getElementById('cardNumber').addEventListener('input', function (e) {
+            e.target.value = e.target.value.replace(/[^\d]/g, '').replace(/(.{4})/g, '$1 ').trim();
+        });
+    });
+
+    function renderCheckout() {
+        const container = document.getElementById('checkoutItems');
+        const totalEl = document.getElementById('checkoutTotal');
+        const savedCart = JSON.parse(localStorage.getItem('weisCart')) || [];
+        
+        if (savedCart.length === 0) {
+            container.innerHTML = "<p style='color: #666;'>Ваша корзина пуста</p>";
+            return;
+        }
+
+        let total = 0;
+        container.innerHTML = savedCart.map(item => {
+            total += item.price;
+            return `
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 12px; border-bottom: 1px solid #222; padding-bottom: 5px;">
+                    <span>${item.name}</span>
+                    <span style="color: red;">${item.price.toLocaleString()} ₽</span>
+                </div>
+            `;
+        }).join('');
+        
+        totalEl.innerText = total.toLocaleString();
+    }
+
+    function processPayment(e) {
+        e.preventDefault();
+        alert('Платеж обрабатывается через защищенный шлюз weisRacing...\nСпасибо за доверие!');
+        localStorage.removeItem('weisCart');
+        window.location.href = 'index.html';
+    }
+</script>
+
+</body>
+</html>
