@@ -1,0 +1,131 @@
+/* --- ГЛОБАЛЬНЫЕ СТИЛИ --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #050505; }
+::-webkit-scrollbar-thumb { background: red; border-radius: 10px; }
+
+body { 
+    font-family: 'Orbitron', sans-serif; 
+    background-color: #050505;
+    background-image: 
+        linear-gradient(45deg, #080808 25%, transparent 25%), 
+        linear-gradient(-45deg, #080808 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #080808 75%), 
+        linear-gradient(-45deg, transparent 75%, #080808 75%);
+    background-size: 12px 12px;
+    color: white; 
+    overflow-x: hidden;
+}
+
+/* --- АНИМАЦИИ --- */
+@keyframes heroEnter {
+    0% { opacity: 0; transform: skewX(-10deg) scale(1.3); filter: blur(15px); }
+    100% { opacity: 1; transform: skewX(-10deg) scale(1); filter: blur(0); }
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* --- ШАПКА --- */
+header { position: fixed; width: 100%; top: 0; z-index: 1000; background: transparent; padding: 10px 0; }
+.header-container {
+    max-width: 1200px; margin: 0 auto; background: rgba(10, 10, 10, 0.96);
+    backdrop-filter: blur(15px); display: flex; justify-content: space-between;
+    align-items: center; padding: 15px 40px; border-bottom: 2px solid red;
+    clip-path: polygon(0 0, 100% 0, 98% 100%, 2% 100%);
+}
+.logo { font-size: 24px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+.logo-r { color: red; font-style: italic; }
+
+.header-right { display: flex; align-items: center; gap: 30px; }
+nav { display: flex; gap: 20px; }
+nav .nav-link { color: #eee; text-decoration: none; font-size: 11px; text-transform: uppercase; transition: 0.3s; }
+nav .nav-link:hover { color: red; }
+
+/* КОРЗИНА В ШАПКЕ */
+.cart-trigger { position: relative; cursor: pointer; font-size: 20px; transition: 0.3s; }
+.cart-trigger:hover { color: red; transform: scale(1.1); }
+.cart-badge { 
+    position: absolute; top: -10px; right: -12px; background: red; color: white; 
+    font-size: 10px; padding: 2px 6px; border-radius: 50%; font-family: sans-serif; font-weight: bold;
+}
+
+/* --- HERO --- */
+.hero { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; text-align: center; }
+.hero video { position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.hero::after { content: ''; position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1; }
+
+.hero h2 {
+    font-size: clamp(32px, 8vw, 75px); z-index: 2; text-transform: uppercase; 
+    transform: skewX(-10deg); filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.8));
+    animation: heroEnter 1.2s ease-out forwards;
+}
+
+.hero p {
+    margin-top: 30px; font-size: clamp(14px, 4vw, 22px); z-index: 2; 
+    text-transform: uppercase; letter-spacing: 4px; 
+    color: rgba(255, 50, 50, 0.9); text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+    opacity: 0; animation: fadeInUp 1s ease-out 0.8s forwards;
+}
+
+/* --- СЕКЦИИ --- */
+.section { padding: 80px 20px; text-align: center; }
+.section h2 { font-size: clamp(24px, 5vw, 38px); text-transform: uppercase; margin-bottom: 50px; font-style: italic; position: relative; display: inline-block; }
+.section h2::after { content: ''; position: absolute; bottom: -10px; right: -25px; width: 80px; height: 4px; background: red; transform: skewX(-30deg); }
+
+/* --- ДОСТИЖЕНИЯ --- */
+.stats { display: flex; justify-content: center; gap: 30px; margin-top: 20px; flex-wrap: wrap; max-width: 1200px; margin-left: auto; margin-right: auto; }
+.stat { 
+    flex: 1; min-width: 250px; padding: 30px; background: rgba(10,10,10,0.8); 
+    border-left: 3px solid red; opacity: 0; transform: translateY(30px); transition: 0.8s ease-out;
+}
+.stat.active { opacity: 1; transform: translateY(0); }
+.stat-icon { font-size: 40px; display: block; margin-bottom: 10px; }
+.stat span { display: block; font-size: 48px; color: red; font-weight: bold; }
+.stat p { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+
+/* --- КАРТОЧКИ ФОРМ --- */
+.card-box { 
+    max-width: 500px; margin: 0 auto; text-align: left; padding: 35px; 
+    background: rgba(15, 15, 15, 0.9); border: 1px solid rgba(255, 0, 0, 0.2); 
+    transition: 0.4s; position: relative;
+}
+.card-box input, .card-box select { width: 100%; padding: 14px; margin: 12px 0; background: #111; border: 1px solid #333; color: white; font-family: inherit; outline: none; }
+.card-box button { width: 100%; padding: 18px; background: red; border: none; color: white; font-weight: bold; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+.card-box button:hover { background: #b30000; }
+
+.add-to-cart-btn { background: transparent !important; border: 1px solid red !important; margin-top: 5px !important; font-size: 10px; }
+.add-to-cart-btn:hover { background: red !important; }
+
+.res-box { margin-top: 15px; font-size: 13px; color: #aaa; min-height: 20px; }
+
+/* --- ВЫЕЗЖАЮЩАЯ КОРЗИНА --- */
+.side-cart {
+    position: fixed; top: 0; right: -400px; width: 380px; height: 100%;
+    background: rgba(5, 5, 5, 0.98); backdrop-filter: blur(20px);
+    z-index: 2000; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 2px solid red; padding: 40px;
+    display: flex; flex-direction: column;
+}
+.side-cart.open { right: 0; }
+.cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; padding-bottom: 20px; margin-bottom: 20px; }
+.cart-close { cursor: pointer; color: red; font-size: 24px; }
+.cart-items-list { flex-grow: 1; overflow-y: auto; }
+.cart-item { display: flex; justify-content: space-between; align-items: center; background: #111; padding: 15px; margin-bottom: 10px; border-left: 2px solid red; }
+.cart-item-title { font-size: 12px; text-transform: uppercase; }
+.cart-item-remove { color: #555; cursor: pointer; transition: 0.3s; }
+.cart-item-remove:hover { color: red; }
+.cart-footer { border-top: 1px solid #222; padding-top: 20px; }
+.total-price { font-size: 20px; text-align: right; margin-bottom: 20px; }
+.checkout-btn { width: 100%; padding: 15px; background: red; color: white; border: none; font-weight: bold; text-transform: uppercase; cursor: pointer; }
+
+footer { padding: 40px; background: #000; border-top: 2px solid red; text-align: center; color: #444; font-size: 10px; }
+
+@media (max-width: 768px) {
+    .header-container { clip-path: none; flex-direction: column; }
+    .hero h2 { font-size: 32px; }
+    .side-cart { width: 100%; right: -100%; }
+}
