@@ -15,16 +15,16 @@
         ::-webkit-scrollbar-track { background: #050505; }
         ::-webkit-scrollbar-thumb { background: red; border-radius: 10px; }
 
-        body { 
-            font-family: 'Orbitron', sans-serif; 
+        body {
+            font-family: 'Orbitron', sans-serif;
             background-color: #050505;
-            background-image: 
-                linear-gradient(45deg, #080808 25%, transparent 25%), 
-                linear-gradient(-45deg, #080808 25%, transparent 25%), 
-                linear-gradient(45deg, transparent 75%, #080808 75%), 
-                linear-gradient(-45deg, transparent 75%, #080808 75%);
+            background-image:
+                    linear-gradient(45deg, #080808 25%, transparent 25%),
+                    linear-gradient(-45deg, #080808 25%, transparent 25%),
+                    linear-gradient(45deg, transparent 75%, #080808 75%),
+                    linear-gradient(-45deg, transparent 75%, #080808 75%);
             background-size: 12px 12px;
-            color: white; 
+            color: white;
             overflow-x: hidden;
         }
 
@@ -49,7 +49,7 @@
         }
         .logo { font-size: 24px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
         .logo-r { color: red; font-style: italic; }
-        
+
         .header-right { display: flex; align-items: center; gap: 30px; }
         nav { display: flex; gap: 20px; }
         nav .nav-link { color: #eee; text-decoration: none; font-size: 11px; text-transform: uppercase; transition: 0.3s; }
@@ -58,8 +58,8 @@
         /* СТИЛЬ КОРЗИНЫ В ШАПКЕ */
         .cart-trigger { position: relative; cursor: pointer; font-size: 20px; transition: 0.3s; }
         .cart-trigger:hover { color: red; transform: scale(1.1); }
-        .cart-badge { 
-            position: absolute; top: -10px; right: -12px; background: red; color: white; 
+        .cart-badge {
+            position: absolute; top: -10px; right: -12px; background: red; color: white;
             font-size: 10px; padding: 2px 6px; border-radius: 50%; font-family: sans-serif; font-weight: bold;
         }
 
@@ -67,16 +67,16 @@
         .hero { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; text-align: center; }
         .hero video { position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
         .hero::after { content: ''; position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1; }
-        
+
         .hero h2 {
-            font-size: clamp(32px, 8vw, 75px); z-index: 2; text-transform: uppercase; 
+            font-size: clamp(32px, 8vw, 75px); z-index: 2; text-transform: uppercase;
             transform: skewX(-10deg); filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.8));
             animation: heroEnter 1.2s ease-out forwards;
         }
-        
+
         .hero p {
-            margin-top: 30px; font-size: clamp(14px, 4vw, 22px); z-index: 2; 
-            text-transform: uppercase; letter-spacing: 4px; 
+            margin-top: 30px; font-size: clamp(14px, 4vw, 22px); z-index: 2;
+            text-transform: uppercase; letter-spacing: 4px;
             color: rgba(255, 50, 50, 0.9); text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
             opacity: 0; animation: fadeInUp 1s ease-out 0.8s forwards;
         }
@@ -88,8 +88,8 @@
 
         /* --- ДОСТИЖЕНИЯ --- */
         .stats { display: flex; justify-content: center; gap: 30px; margin-top: 20px; flex-wrap: wrap; max-width: 1200px; margin-left: auto; margin-right: auto; }
-        .stat { 
-            flex: 1; min-width: 250px; padding: 30px; background: rgba(10,10,10,0.8); 
+        .stat {
+            flex: 1; min-width: 250px; padding: 30px; background: rgba(10,10,10,0.8);
             border-left: 3px solid red; opacity: 0; transform: translateY(30px); transition: 0.8s ease-out;
         }
         .stat.active { opacity: 1; transform: translateY(0); }
@@ -98,9 +98,9 @@
         .stat p { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
 
         /* --- КАРТОЧКИ ФОРМ --- */
-        .card-box { 
-            max-width: 500px; margin: 0 auto; text-align: left; padding: 35px; 
-            background: rgba(15, 15, 15, 0.9); border: 1px solid rgba(255, 0, 0, 0.2); 
+        .card-box {
+            max-width: 500px; margin: 0 auto; text-align: left; padding: 35px;
+            background: rgba(15, 15, 15, 0.9); border: 1px solid rgba(255, 0, 0, 0.2);
             transition: 0.4s; position: relative;
         }
         .card-box input, .card-box select { width: 100%; padding: 14px; margin: 12px 0; background: #111; border: 1px solid #333; color: white; font-family: inherit; outline: none; }
@@ -150,7 +150,7 @@
         <span class="cart-close" onclick="toggleCart()">×</span>
     </div>
     <div id="cartItemsList" class="cart-items-list">
-        </div>
+    </div>
     <div class="cart-footer">
         <div class="total-price">ИТОГО: <span id="cartTotal">0</span> ₽</div>
         <button class="checkout-btn" onclick="alert('Переход к оплате...')">ОФОРМИТЬ ЗАКАЗ</button>
@@ -158,125 +158,125 @@
 </div>
 
 <header>
-    <div class="header-container">
-        <div class="logo">weis<span class="logo-r">Racing</span></div>
-        <div class="header-right">
-            <nav>
-                <a href="#" class="nav-link">Главная</a>
-                <a href="#vin" class="nav-link">VIN-Сервис</a>
-                <a href="#achievements" class="nav-link">Успехи</a>
-                <a href="#booking" class="nav-link">Запись</a>
-            </nav>
-            <div class="cart-trigger" onclick="toggleCart()">
-                🛒 <span class="cart-badge" id="cartBadge">0</span>
-            </div>
+        <div class="header-container">
+            <div class="logo">weis<span class="logo-r">Racing</span></div>
+    <div class="header-right">
+                <nav>
+                    <a href="#" class="nav-link">Главная</a>
+                    <a href="#vin" class="nav-link">VIN-Сервис</a>
+                    <a href="#achievements" class="nav-link">Успехи</a>
+                    <a href="#booking" class="nav-link">Запись</a>
+                </nav>
+        <div class="cart-trigger" onclick="toggleCart()">
+            🛒 <span class="cart-badge" id="cartBadge">0</span>
         </div>
-    </div>
+    </div>
+        </div>
 </header>
 
 <section class="hero">
-    <video autoplay muted loop playsinline><source src="cars.mp4" type="video/mp4"></video>
-    <h2>DRAG PERFORMANCE</h2>
-    <p>Мощность. Разгон. Победа.</p>
+        <video autoplay muted loop playsinline><source src="cars.mp4" type="video/mp4"></video>
+        <h2>DRAG PERFORMANCE</h2>
+        <p>Мощность. Разгон. Победа.</p>
 </section>
 
 <section id="vin" class="section">
-    <h2>Подбор по VIN</h2>
-    <div class="card-box">
-        <p style="font-size: 10px; color: #888; margin-bottom: 10px; text-transform: uppercase;">Идентификация автомобиля в глобальной базе</p>
-        <input type="text" id="vin-input" placeholder="Введите 17 символов VIN" maxlength="17" style="text-transform: uppercase;">
-        <button onclick="checkVin()">Найти конфигурацию</button>
-        <div id="vin-res" class="res-box"></div>
-    </div>
+        <h2>Подбор по VIN</h2>
+        <div class="card-box">
+            <p style="font-size: 10px; color: #888; margin-bottom: 10px; text-transform: uppercase;">Идентификация автомобиля в глобальной базе</p>
+            <input type="text" id="vin-input" placeholder="Введите 17 символов VIN" maxlength="17" style="text-transform: uppercase;">
+            <button onclick="checkVin()">Найти конфигурацию</button>
+            <div id="vin-res" class="res-box"></div>
+        </div>
 </section>
 
 <section id="achievements" class="section">
-    <h2>Наши достижения</h2>
-    <div class="stats">
-        <div class="stat">
-            <i class="stat-icon">🏎️</i>
-            <span class="counter" data-target="350">0</span>
-            <p>Проектов реализовано</p>
-        </div>
-        <div class="stat">
-            <i class="stat-icon">⏱️</i>
-            <span class="counter" data-target="21">0</span>
-            <p>Рекорд 0-100 (x0.1s)</p>
-        </div>
-        <div class="stat">
-            <i class="stat-icon">🛠️</i>
-            <span class="counter" data-target="15">0</span>
-            <p>Лет опыта инженеров</p>
-        </div>
-    </div>
+        <h2>Наши достижения</h2>
+        <div class="stats">
+            <div class="stat">
+                <i class="stat-icon">🏎️</i>
+                <span class="counter" data-target="350">0</span>
+                <p>Проектов реализовано</p>
+            </div>
+            <div class="stat">
+                <i class="stat-icon">⏱️</i>
+                <span class="counter" data-target="21">0</span>
+                <p>Рекорд 0-100 (x0.1s)</p>
+            </div>
+            <div class="stat">
+                <i class="stat-icon">🛠️</i>
+                <span class="counter" data-target="15">0</span>
+                <p>Лет опыта инженеров</p>
+            </div>
+        </div>
 </section>
 
 <section id="booking" class="section">
-    <h2>Запись в бокс</h2>
-    <div class="card-box">
-        <form onsubmit="event.preventDefault(); alert('Заявка принята! Инженер свяжется с вами в ближайшее время.');">
-            <input type="text" placeholder="Ваше имя" required>
-            <input type="tel" placeholder="Номер телефона" required>
-            <select id="serviceSelect" required>
-                <option value="" disabled selected>Желаемая услуга</option>
-                <option data-price="25000">Чип-тюнинг Stage 1</option>
-                <option data-price="45000">Чип-тюнинг Stage 2</option>
-                <option data-price="15000">Диагностика ЭБУ</option>
-            </select>
-            <button type="button" class="add-to-cart-btn" onclick="addToCartFromForm()">Добавить в корзину</button>
-            <button type="submit" style="margin-top: 10px;">Отправить запрос мастеру</button>
-        </form>
-    </div>
+        <h2>Запись в бокс</h2>
+        <div class="card-box">
+    <form onsubmit="event.preventDefault(); alert('Заявка принята! Инженер свяжется с вами в ближайшее время.');">
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="tel" placeholder="Номер телефона" required>
+                <select id="serviceSelect" required>
+                    <option value="" disabled selected>Желаемая услуга</option>
+                    <option data-price="25000">Чип-тюнинг Stage 1</option>
+                    <option data-price="45000">Чип-тюнинг Stage 2</option>
+                    <option data-price="15000">Диагностика ЭБУ</option>
+                </select>
+        <button type="button" class="add-to-cart-btn" onclick="addToCartFromForm()">Добавить в корзину</button>
+                <button type="submit" style="margin-top: 10px;">Отправить запрос мастеру</button>
+    </form>
+        </div>
 </section>
 
 <footer>
-    <p>© 2026 WEISRACING PERFORMANCE — ENGINEERING THE SPEED</p>
+        <p>© 2026 WEISRACING PERFORMANCE — ENGINEERING THE SPEED</p>
 </footer>
 
 <script>
-// ЛОГИКА КОРЗИНЫ
-let cart = JSON.parse(localStorage.getItem('weisCart')) || [];
+    // ЛОГИКА КОРЗИНЫ
+    let cart = JSON.parse(localStorage.getItem('weisCart')) || [];
 
-function toggleCart() {
-    document.getElementById('sideCart').classList.toggle('open');
-}
-
-function addToCartFromForm() {
-    const select = document.getElementById('serviceSelect');
-    const selectedOption = select.options[select.selectedIndex];
-    
-    if (select.value === "") {
-        alert("Выберите услугу!");
-        return;
+    function toggleCart() {
+        document.getElementById('sideCart').classList.toggle('open');
     }
 
-    const item = {
-        id: Date.now(),
-        name: selectedOption.text,
-        price: parseInt(selectedOption.getAttribute('data-price'))
-    };
+    function addToCartFromForm() {
+        const select = document.getElementById('serviceSelect');
+        const selectedOption = select.options[select.selectedIndex];
 
-    cart.push(item);
-    updateCartUI();
-    if(!document.getElementById('sideCart').classList.contains('open')) toggleCart();
-}
+        if (select.value === "") {
+            alert("Выберите услугу!");
+            return;
+        }
 
-function removeFromCart(id) {
-    cart = cart.filter(item => item.id !== id);
-    updateCartUI();
-}
+        const item = {
+            id: Date.now(),
+            name: selectedOption.text,
+            price: parseInt(selectedOption.getAttribute('data-price'))
+        };
 
-function updateCartUI() {
-    const list = document.getElementById('cartItemsList');
-    const badge = document.getElementById('cartBadge');
-    const total = document.getElementById('cartTotal');
-    
-    list.innerHTML = '';
-    let totalPrice = 0;
+        cart.push(item);
+        updateCartUI();
+        if(!document.getElementById('sideCart').classList.contains('open')) toggleCart();
+    }
 
-    cart.forEach(item => {
-        totalPrice += item.price;
-        list.innerHTML += `
+    function removeFromCart(id) {
+        cart = cart.filter(item => item.id !== id);
+        updateCartUI();
+    }
+
+    function updateCartUI() {
+        const list = document.getElementById('cartItemsList');
+        const badge = document.getElementById('cartBadge');
+        const total = document.getElementById('cartTotal');
+
+        list.innerHTML = '';
+        let totalPrice = 0;
+
+        cart.forEach(item => {
+            totalPrice += item.price;
+            list.innerHTML += `
             <div class="cart-item">
                 <div class="cart-item-info">
                     <div class="cart-item-title">${item.name}</div>
@@ -285,68 +285,68 @@ function updateCartUI() {
                 <div class="cart-item-remove" onclick="removeFromCart(${item.id})">×</div>
             </div>
         `;
+        });
+
+        badge.innerText = cart.length;
+        total.innerText = totalPrice.toLocaleString();
+        localStorage.setItem('weisCart', JSON.stringify(cart));
+    }
+
+    // Инициализация корзины при загрузке
+    updateCartUI();
+
+    // ЛОГИКА VIN
+    async function checkVin() {
+        const vin = document.getElementById('vin-input').value.toUpperCase();
+        const res = document.getElementById('vin-res');
+        if(vin.length !== 17) { res.innerHTML = "<span style='color:red'>ОШИБКА: НУЖНО 17 СИМВОЛОВ</span>"; return; }
+
+        res.innerText = "ЗАПРОС К СЕРВЕРУ NHTSA...";
+        try {
+            const response = await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/${vin}?format=json`);
+            const data = await response.json();
+            const brand = data.Results.find(i => i.VariableId === 26)?.Value;
+            const model = data.Results.find(i => i.VariableId === 28)?.Value;
+            const year = data.Results.find(i => i.VariableId === 29)?.Value;
+
+            if(brand) {
+                res.innerHTML = `НАЙДЕНО: <span style="color:white">${year || ''} ${brand} ${model || ''}</span><br><p style="color:red; font-size:10px; margin-top:5px;">ДАННЫЕ ПЕРЕДАНЫ МАСТЕРУ ДЛЯ ОЦЕНКИ STAGE</p>`;
+            } else { res.innerText = "АВТОМОБИЛЬ НЕ НАЙДЕН В БАЗЕ"; }
+        } catch(e) { res.innerText = "ОШИБКА ПОДКЛЮЧЕНИЯ К БАЗЕ"; }
+    }
+
+    // АНИМАЦИЯ ДОСТИЖЕНИЙ
+    const statsSection = document.querySelector('.stats');
+    const statCards = document.querySelectorAll('.stat');
+    const counters = document.querySelectorAll('.counter');
+    let started = false;
+
+    function startCounters() {
+        counters.forEach(c => {
+            const target = +c.dataset.target;
+            let current = 0;
+            const increment = target / 40;
+            const update = () => {
+                current += increment;
+                if (current < target) {
+                    c.innerText = Math.ceil(current);
+                    setTimeout(update, 40);
+                } else { c.innerText = target; }
+            };
+            update();
+        });
+    }
+
+    window.addEventListener('scroll', () => {
+        const rect = statsSection.getBoundingClientRect();
+        if (!started && rect.top < window.innerHeight - 100) {
+            started = true;
+            statCards.forEach((card, index) => {
+                setTimeout(() => card.classList.add('active'), index * 200);
+            });
+            startCounters();
+        }
     });
-
-    badge.innerText = cart.length;
-    total.innerText = totalPrice.toLocaleString();
-    localStorage.setItem('weisCart', JSON.stringify(cart));
-}
-
-// Инициализация корзины при загрузке
-updateCartUI();
-
-// ЛОГИКА VIN
-async function checkVin() {
-    const vin = document.getElementById('vin-input').value.toUpperCase();
-    const res = document.getElementById('vin-res');
-    if(vin.length !== 17) { res.innerHTML = "<span style='color:red'>ОШИБКА: НУЖНО 17 СИМВОЛОВ</span>"; return; }
-    
-    res.innerText = "ЗАПРОС К СЕРВЕРУ NHTSA...";
-    try {
-        const response = await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/${vin}?format=json`);
-        const data = await response.json();
-        const brand = data.Results.find(i => i.VariableId === 26)?.Value;
-        const model = data.Results.find(i => i.VariableId === 28)?.Value;
-        const year = data.Results.find(i => i.VariableId === 29)?.Value;
-
-        if(brand) {
-            res.innerHTML = `НАЙДЕНО: <span style="color:white">${year || ''} ${brand} ${model || ''}</span><br><p style="color:red; font-size:10px; margin-top:5px;">ДАННЫЕ ПЕРЕДАНЫ МАСТЕРУ ДЛЯ ОЦЕНКИ STAGE</p>`;
-        } else { res.innerText = "АВТОМОБИЛЬ НЕ НАЙДЕН В БАЗЕ"; }
-    } catch(e) { res.innerText = "ОШИБКА ПОДКЛЮЧЕНИЯ К БАЗЕ"; }
-}
-
-// АНИМАЦИЯ ДОСТИЖЕНИЙ
-const statsSection = document.querySelector('.stats');
-const statCards = document.querySelectorAll('.stat');
-const counters = document.querySelectorAll('.counter');
-let started = false;
-
-function startCounters() {
-    counters.forEach(c => {
-        const target = +c.dataset.target;
-        let current = 0;
-        const increment = target / 40;
-        const update = () => {
-            current += increment;
-            if (current < target) {
-                c.innerText = Math.ceil(current);
-                setTimeout(update, 40);
-            } else { c.innerText = target; }
-        };
-        update();
-    });
-}
-
-window.addEventListener('scroll', () => {
-    const rect = statsSection.getBoundingClientRect();
-    if (!started && rect.top < window.innerHeight - 100) {
-        started = true;
-        statCards.forEach((card, index) => {
-            setTimeout(() => card.classList.add('active'), index * 200);
-        });
-        startCounters();
-    }
-});
 </script>
 
 </body>
