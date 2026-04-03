@@ -6,10 +6,7 @@
     <title>weisRacing | Drag Performance & Engineering</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <script src = "script.js"></script>
-
-
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -19,7 +16,7 @@
         <span class="cart-close" onclick="toggleCart()">×</span>
     </div>
     <div id="cartItemsList" class="cart-items-list">
-    </div>
+        </div>
     <div class="cart-footer">
         <div class="total-price">ИТОГО: <span id="cartTotal">0</span> ₽</div>
         <button class="checkout-btn" onclick="alert('Переход к оплате...')">ОФОРМИТЬ ЗАКАЗ</button>
@@ -27,31 +24,25 @@
 </div>
 
 <header>
-     
     <div class="header-container">
-         
         <div class="logo">weis<span class="logo-r">Racing</span></div>
         <div class="header-right">
-             
             <nav>
                 <a href="#" class="nav-link">Главная</a>
                 <a href="#vin" class="nav-link">VIN-Сервис</a>
                 <a href="#achievements" class="nav-link">Успехи</a>
                 <a href="#booking" class="nav-link">Запись</a>
-                 
             </nav>
             <div class="cart-trigger" onclick="toggleCart()">
                 🛒 <span class="cart-badge" id="cartBadge">0</span>
             </div>
         </div>
-         
     </div>
 </header>
 
 <section class="hero">
-     
     <video autoplay muted loop playsinline>
-        <source src="cars.mp4" type="video/mp4">
+        <source src="../vids/cars.mp4" type="video/mp4">
     </video>
     <h2>DRAG PERFORMANCE</h2>
     <p>Мощность. Разгон. Победа.</p>
@@ -59,71 +50,50 @@
 
 <section id="vin" class="section">
     <h2>Подбор по VIN</h2>
-     
     <div class="card-box">
-        <p style="font-size: 10px; color: #888; margin-bottom: 10px; text-transform: uppercase;">Идентификация
-        автомобиля в глобальной базе</p>
-        <input type="text" id="vin-input" placeholder="Введите 17 символов VIN" maxlength="17"
-                       style="text-transform: uppercase;">
-         
+        <p style="font-size: 10px; color: #888; margin-bottom: 10px; text-transform: uppercase;">Идентификация автомобиля в глобальной базе</p>
+        <input type="text" id="vin-input" placeholder="Введите 17 символов VIN" maxlength="17" style="text-transform: uppercase;">
         <button onclick="checkVin()">Найти конфигурацию</button>
-         
         <div id="vin-res" class="res-box"></div>
-         
     </div>
 </section>
 
 <section id="achievements" class="section">
     <h2>Наши достижения</h2>
-     
     <div class="stats">
-         
         <div class="stat">
             <i class="stat-icon">🏎️</i>
             <span class="counter" data-target="350">0</span>
-             <p>Проектов реализовано</p>
-             
+            <p>Проектов реализовано</p>
         </div>
-         
         <div class="stat">
             <i class="stat-icon">⏱️</i>
             <span class="counter" data-target="21">0</span>
             <p>Рекорд 0-100 (x0.1s)</p>
-             
         </div>
-         
         <div class="stat">
             <i class="stat-icon">🛠️</i>
             <span class="counter" data-target="15">0</span>
             <p>Лет опыта инженеров</p>
-             
         </div>
-         
     </div>
 </section>
 
 <section id="booking" class="section">
     <h2>Запись в бокс</h2>
-     
     <div class="card-box">
         <form onsubmit="event.preventDefault(); alert('Заявка принята! Инженер свяжется с вами в ближайшее время.');">
             <input type="text" placeholder="Ваше имя" required>
             <input type="tel" placeholder="Номер телефона" required>
             <select id="serviceSelect" required>
-             
-            <option value="" disabled selected>Желаемая услуга</option>
-             
-            <option data-price="25000">Чип-тюнинг Stage 1</option>
-             
-            <option data-price="45000">Чип-тюнинг Stage 2</option>
-             
-            <option data-price="15000">Диагностика ЭБУ</option>
+                <option value="" disabled selected>Желаемая услуга</option>
+                <option data-price="25000">Чип-тюнинг Stage 1</option>
+                <option data-price="45000">Чип-тюнинг Stage 2</option>
+                <option data-price="15000">Диагностика ЭБУ</option>
             </select>
             <button type="button" class="add-to-cart-btn" onclick="addToCartFromForm()">Добавить в корзину</button>
-             
             <button type="submit" style="margin-top: 10px;">Отправить запрос мастеру</button>
         </form>
-         
     </div>
 </section>
 
@@ -131,130 +101,6 @@
     <p>© 2026 WEISRACING PERFORMANCE — ENGINEERING THE SPEED</p>
 </footer>
 
-<script>
-    // ЛОГИКА КОРЗИНЫ
-    let cart = JSON.parse(localStorage.getItem('weisCart')) || [];
-
-    function toggleCart() {
-        document.getElementById('sideCart').classList.toggle('open');
-    }
-
-    function addToCartFromForm() {
-        const select = document.getElementById('serviceSelect');
-        const selectedOption = select.options[select.selectedIndex];
-
-        if (select.value === "") {
-            alert("Выберите услугу!");
-            return;
-        }
-
-        const item = {
-            id: Date.now(),
-            name: selectedOption.text,
-            price: parseInt(selectedOption.getAttribute('data-price'))
-        };
-
-        cart.push(item);
-        updateCartUI();
-        if (!document.getElementById('sideCart').classList.contains('open')) toggleCart();
-    }
-
-    function removeFromCart(id) {
-        cart = cart.filter(item => item.id !== id);
-        updateCartUI();
-    }
-
-    function updateCartUI() {
-        const list = document.getElementById('cartItemsList');
-        const badge = document.getElementById('cartBadge');
-        const total = document.getElementById('cartTotal');
-
-        list.innerHTML = '';
-        let totalPrice = 0;
-
-        cart.forEach(item => {
-            totalPrice += item.price;
-            list.innerHTML += `
-            <div class="cart-item">
-                <div class="cart-item-info">
-                    <div class="cart-item-title">${item.name}</div>
-                    <div style="color:red; font-size:12px;">${item.price.toLocaleString()} ₽</div>
-                </div>
-                <div class="cart-item-remove" onclick="removeFromCart(${item.id})">×</div>
-            </div>
-        `;
-        });
-
-        badge.innerText = cart.length;
-        total.innerText = totalPrice.toLocaleString();
-        localStorage.setItem('weisCart', JSON.stringify(cart));
-    }
-
-    // Инициализация корзины при загрузке
-    updateCartUI();
-
-    // ЛОГИКА VIN
-    async function checkVin() {
-        const vin = document.getElementById('vin-input').value.toUpperCase();
-        const res = document.getElementById('vin-res');
-        if (vin.length !== 17) {
-            res.innerHTML = "<span style='color:red'>ОШИБКА: НУЖНО 17 СИМВОЛОВ</span>";
-            return;
-        }
-
-        res.innerText = "ЗАПРОС К СЕРВЕРУ NHTSA...";
-        try {
-            const response = await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/${vin}?format=json`);
-            const data = await response.json();
-            const brand = data.Results.find(i => i.VariableId === 26)?.Value;
-            const model = data.Results.find(i => i.VariableId === 28)?.Value;
-            const year = data.Results.find(i => i.VariableId === 29)?.Value;
-
-            if (brand) {
-                res.innerHTML = `НАЙДЕНО: <span style="color:white">${year || ''} ${brand} ${model || ''}</span><br><p style="color:red; font-size:10px; margin-top:5px;">ДАННЫЕ ПЕРЕДАНЫ МАСТЕРУ ДЛЯ ОЦЕНКИ STAGE</p>`;
-            } else {
-                res.innerText = "АВТОМОБИЛЬ НЕ НАЙДЕН В БАЗЕ";
-            }
-        } catch (e) {
-            res.innerText = "ОШИБКА ПОДКЛЮЧЕНИЯ К БАЗЕ";
-        }
-    }
-
-    // АНИМАЦИЯ ДОСТИЖЕНИЙ
-    const statsSection = document.querySelector('.stats');
-    const statCards = document.querySelectorAll('.stat');
-    const counters = document.querySelectorAll('.counter');
-    let started = false;
-
-    function startCounters() {
-        counters.forEach(c => {
-            const target = +c.dataset.target;
-            let current = 0;
-            const increment = target / 40;
-            const update = () => {
-                current += increment;
-                if (current < target) {
-                    c.innerText = Math.ceil(current);
-                    setTimeout(update, 40);
-                } else {
-                    c.innerText = target;
-                }
-            };
-            update();
-        });
-    }
-
-    window.addEventListener('scroll', () => {
-        const rect = statsSection.getBoundingClientRect();
-        if (!started && rect.top < window.innerHeight - 100) {
-            started = true;
-            statCards.forEach((card, index) => {
-                setTimeout(() => card.classList.add('active'), index * 200);
-            });
-            startCounters();
-        }
-    });
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
